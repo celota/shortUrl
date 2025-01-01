@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  application:
+  name: urlshortener
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: demo
+      username: sa
+      password: secret
+      uri: mongodb://localhost:27017/sa
