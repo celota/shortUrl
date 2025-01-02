@@ -25,7 +25,7 @@ public class UrlController {
 	
 	private UrlService urlService;
 	
-	//curl -v -X POST http://localhost:8081/api/shorten-url -d '{"url":"http://www.google.com"}' -H 'Content-type: application/json'
+	//curl -v -X POST http://localhost:8080/shorten-url -d '{"url":"http://www.google.com"}' -H 'Content-type: application/json'
 	@PostMapping("/shorten-url")
 	public ResponseEntity<UrlResponseDTO> shortenUrl(@RequestBody UrlRequestDTO data, HttpServletRequest request){
         return ResponseEntity.ok(urlService.shortenUrl(data,request));
@@ -37,16 +37,19 @@ public class UrlController {
         return ResponseEntity.status(HttpStatus.FOUND).headers(headers).build();
     }
 	
+	//curl -v -X PATCH http://localhost:8080/enable/'
 	@PatchMapping("/enable/{id}")
     public ResponseEntity<UrlResponseDTO> enable(@PathVariable("id") String id) {
 		return ResponseEntity.ok(urlService.enable(id));
     }
 	
+	//curl -v -X PATCH http://localhost:8080/disable/'
 	@PatchMapping("/disable/{id}")
     public ResponseEntity<UrlResponseDTO> disable(@PathVariable("id") String id) {
         return ResponseEntity.ok(urlService.disable(id));
     }
 	
+	//curl -v -X PATCH http://localhost:8080/modify -d '{"id":"ZazbL","nameUrl": "http://www.google.com","newNameUrl": "http://lubuntu.com","active": true}' -H 'Content-type: application/json'
 	@PatchMapping("/modify")
     public ResponseEntity<UrlResponseDTO> modify(@RequestBody UrlRequestDTOIdNameActive data,HttpServletRequest request) {
         return ResponseEntity.ok(urlService.modify(data,request));
