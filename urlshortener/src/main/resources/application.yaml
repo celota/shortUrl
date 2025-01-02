@@ -6,9 +6,9 @@ spring:
   name: urlshortener
   data:
     mongodb:
-      host: localhost
+      host: ${MONGO_HOST:localhost}
       port: 27017
-      database: demo
+      database: ${MONGO_DATABASE:demo}
       username: sa
       password: secret
-      uri: mongodb://localhost:27017/sa
+      uri: ${MONGO_URL:mongodb://localhost:27017/sa}
