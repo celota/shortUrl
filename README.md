@@ -3,6 +3,12 @@
 Servicio que permite recortar URLs largas para obtener URLs mas compactas y faciles de compartir.
 
 
+### Descripcion
+Basicamente consta un controller que hace todas las llamadas a los servicios correspondientes.
+La capa de servicios será la encargada de realizar todas las operaciones mediante el uso de un repositorio especifico.
+Se define una entidad para persistencia de datos y ciertos registros contenedores de informacion.
+Tambien se definen excepciones de tipo runtime que seran utilizadas en caso de que se busque informacion inexistente.
+
 ### Configuración
 
 Es un proyecto Spring Boot (versión 3.1.1) compatible con Java 17.
@@ -17,8 +23,7 @@ Para levantar el proyecto:
 ### Uso
 
 Para recortar URLs solo hay que invocar al RestController shorten-url.
-Persitira las URLs en una base mongoDB.
-El servicio retornará la url pasada como parámetro, la nueva URL recortada y un flag que indica si está activa o no.
+El mismo, persitira las URLs en una base mongoDB y tambien retornará la url pasada como parámetro, la nueva URL recortada y un flag que indica si está activa o no.
 
 Ejemplo:
 
@@ -44,7 +49,7 @@ En la raiz del proyecto se encuentra el Dockerfile que contiene las especificaci
 
 ### DockerCompose
 
-En la carpeta docker se encuentra el docker-compose.yml que nos permite generar las imagenes correspondientes a mongoDB y a la aplicacion. 
+En la carpeta docker se encuentra el docker-compose.yml que nos permite generar las contenedores correspondientes a mongoDB y a la aplicacion. 
 
 El application.yaml definirá sus valores para ciertas propiedades (host, url, y el nombre de la BD) en relación a si estan seteadas determinadas variables de entorno o no.
 
