@@ -45,9 +45,16 @@ En la raiz del proyecto se encuentra el Dockerfile que contiene las especificaci
 ### DockerCompose
 
 En la carpeta docker se encuentra el docker-compose.yml que nos permite generar las imagenes correspondientes a mongoDB y a la aplicacion. 
-Para el service urlsvc se setean 3 variables de entorno que son las que se van a tener en cuenta al momento de setear propiedades para mongoDB (host, url, y el nombre de la BD).
-El application.yaml definirá sus valores para las propiedades descriptas en relación a si estan seteadas determinadas variables de entorno o no. Si estan seteadas las propiedades tendran un valor y si no lo estan tendran otro valor.
 
+El application.yaml definirá sus valores para ciertas propiedades (host, url, y el nombre de la BD) en relación a si estan seteadas determinadas variables de entorno o no.
+
+Para el service urlsvc se setean 3 variables de entorno que son las que se van a tener en cuenta al momento de setear propiedades para mongoDB (host, url, y el nombre de la BD).
+
+```
+	host: ${MONGO_HOST:localhost}
+	database: ${MONGO_DATABASE:demo}
+	uri: ${MONGO_URL:mongodb://localhost:27017/sa}
+```
 
 
 
